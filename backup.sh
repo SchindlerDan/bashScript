@@ -24,6 +24,8 @@ do
 	elif [[ -d $input && -e $input ]]
 		then
 		cp $input ~/Backup -r
+	else
+		echo " There is an error in the commands please fix it anad try again"
 	fi
 
 
@@ -38,20 +40,22 @@ for input in $*
 do
 	if [[ $input = "-c" ]]
                 then
-                echo "The number of files:"
+                echo "The number of files and directories:"
                 ls ~/Backup| wc -l
                 echo "how many bytes:"
                 du -b ~/Backup
 
         elif [ $input = "-l" ]
                 then
-                echo "List all the files"
+                echo "List all the files and directories"
                 ls ~/Backup -a
         elif [ "--help" = $input ]
                 then
                 echo "How to run this script"
                 echo "-c will give you the number of files and how many bytes."
                 echo "-l will list all files"
+	else
+		echo "Error 404:Your command did not exist in the given prompts"
 
         fi
 done

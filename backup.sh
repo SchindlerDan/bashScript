@@ -25,7 +25,7 @@ do
 		then
 		cp $input ~/Backup -r
 	else
-		echo " There is an error in the commands please fix it anad try again"
+		echo " There is an error in the commands please fix it and try again"
 	fi
 
 
@@ -59,3 +59,8 @@ do
 
         fi
 done
+
+
+
+
+

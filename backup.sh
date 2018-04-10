@@ -1,5 +1,13 @@
 #!/bin/bash
 
+
+if [[ $# < 1 ]]
+	then
+	echo "Please add a file, directory, or one of the following commands: -c, -l, --help"
+	exit 1
+fi
+
+
 for input in $*
 do
 
@@ -31,22 +39,19 @@ do
 	if [[ $input = "-c" ]]
                 then
                 echo "The number of files:"
-                ls| wc -l
+                ls ~/Backup| wc -l
                 echo "how many bytes:"
-                du -b .
+                du -b ~/Backup
 
         elif [ $input = "-l" ]
                 then
                 echo "List all the files"
-                ls -a
+                ls ~/Backup -a
         elif [ "--help" = $input ]
                 then
                 echo "How to run this script"
                 echo "-c will give you the number of files and how many bytes."
                 echo "-l will list all files"
-        elif [ "-lt2" = "$s" ]
-                then
-                echo "Complete"
 
         fi
 done

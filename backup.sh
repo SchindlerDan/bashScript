@@ -1,6 +1,8 @@
 #!/bin/bash
-
-
+# i is the correct command syntax for files
+i=0 
+# j is the incorrect command syntax for files
+j=0
 if [[ $# < 1 ]]
 	then
 	echo "Please add a file, directory, or one of the following commands: -c, -l, --help"
@@ -13,6 +15,7 @@ do
 
 	if [[ -d  ~/Backup ]]
 		then
+		i=i+1
         	echo
 	else
         	mkdir ~/Backup
@@ -20,12 +23,15 @@ do
 	
 	if [[ -f $input && -e $input ]]
 		then
+		i=i+1
 		cp $input ~/Backup
 	elif [[ -d $input && -e $input ]]
 		then
+		i=i+1
 		cp $input ~/Backup -r
 	else
-		echo " There is an error in the commands please fix it anad try again"
+		
+		echo " trying $* as a command arguement"
 	fi
 
 
@@ -47,7 +53,7 @@ do
 
         elif [ $input = "-l" ]
                 then
-                echo "List all the files and directories"
+                echo "Listing all the files and directories"
                 ls ~/Backup -a
         elif [ "--help" = $input ]
                 then
@@ -55,7 +61,7 @@ do
                 echo "-c will give you the number of files and how many bytes."
                 echo "-l will list all files"
 	else
-		echo "Error 404:Your command did not exist in the given prompts"
+		echo "Error 404: $*  did not exist in the given prompts"
 
         fi
 done
